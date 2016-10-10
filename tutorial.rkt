@@ -42,7 +42,7 @@
       (λ (tp event)
         (case (send tp get-item-label (send tp get-selection))
           [("&Lookup")
-            (send tp change-children get-lookup-panel)]
+            (send tp change-children (get-lookup-panel5 tp))]
           [("&Training")
             (send tp change-children
               (λ (children)
@@ -68,6 +68,12 @@
   (define lookup-panel (new panel% [parent tab-panel]))
   (define lookup-panel-message (new message% [parent lookup-panel] [label "LOOKUP"]))
   (list lookup-panel))
+
+(define (get-lookup-panel5 parent-elem)
+  (define lookup-panel (new panel% [parent parent-elem]))
+  (define lookup-panel-message (new message% [parent lookup-panel] [label "LOOKUP"]))
+  (lambda (children)
+    (list lookup-panel)))
 
 (define lookup-panel (new panel% [parent tab-panel]))
 (define lookup-panel-content
